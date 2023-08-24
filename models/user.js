@@ -6,9 +6,11 @@ const userSchema = new Schema({
     },
     username: {
         type: String,
+        default: '',
     },
-    image: {
+    role: {
         type: String,
+        default: 'customer',
     }
 })
 

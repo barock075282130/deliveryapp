@@ -1,5 +1,6 @@
 import Nav from '@components/Nav';
 import Provider from '@components/Provider';
+import { Noto_Sans_Thai } from 'next/font/google';
 import 'styles/globals.css';
 
 export const metadata = {
@@ -7,13 +8,20 @@ export const metadata = {
   description: "Delivery App",
 };
 
+const notoSansThai = Noto_Sans_Thai({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="p-6">
+    <html lang="en" className={notoSansThai.className}>
+      <body className='h-screen'>
         <Provider>
           <Nav />
-          {children}
+          <main className='p-4 flex'>
+            {children}
+          </main>
         </Provider>
       </body>
     </html>

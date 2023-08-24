@@ -31,8 +31,8 @@ const handler = NextAuth({
         if (!userExists) {
           await User.create({
             email: profile.email,
-            username: profile.name.toLowerCase(),
-            image: profile.picture.data.url || profile.picture
+            username: '',
+            role: 'customer',
           });
         }
 
