@@ -3,11 +3,12 @@ import connectDB from "@utils/database";
 import { NextResponse } from "next/server";
 
 export const POST = async(req) => {
-    const { username, receiveFrom, sendTo, packageInfo } = await req.json();
+    const { username, title, receiveFrom, sendTo, packageInfo } = await req.json();
     try {
         await connectDB();
         const data = await new Package({
             username,
+            title,
             receiveFrom,
             sendTo,
             packageInfo,

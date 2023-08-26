@@ -5,6 +5,10 @@ const packageSchema = new Schema({
         type: String,
         required: [true, "username can not be empty!!"],
     },
+    title: {
+        type: String,
+        require: [true, "title can not be empty!!"],
+    },
     receiveFrom: {
         type: String,
         required: [true, "location can not be empty!!"],

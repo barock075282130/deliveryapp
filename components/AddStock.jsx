@@ -11,6 +11,7 @@ const AddStock = () => {
     const router = useRouter();
     const [ info, setInfo ] = useState({
         username: userData,
+        title:'',
         receiveFrom: '',
         sendTo:'',
         packageInfo:'',
@@ -24,13 +25,14 @@ const AddStock = () => {
                 method: "POST",
                 body: JSON.stringify({
                     username: info.username,
+                    title: info.title,
                     receiveFrom: info.receiveFrom,
                     sendTo: info.sendTo,
                     packageInfo: info.packageInfo,
                 })
             })
             if(res.ok){
-                router.push('/')
+                router.push('/stocklist')
             }
         } catch (error) {
             console.log('Add Order Fail')

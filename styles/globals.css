@@ -10,6 +10,10 @@
     @apply p-2 bg-green-100 text-green-600 rounded-lg
 }
 
+.gray_button{
+    @apply p-2 bg-gray-100 text-gray-600 rounded-lg
+}
+
 .added_box{
     @apply w-24 h-20 rounded-md bg-gray-200 relative cursor-pointer flex justify-center items-center
 }

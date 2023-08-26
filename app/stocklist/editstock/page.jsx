@@ -14,6 +14,7 @@ const editStock = () => {
     const [ confirm, setConfirm ] = useState(false)
     const [ packageInfo, setPackageInfo ] = useState({
         username: '',
+        title:'',
         receiveFrom:'',
         sendTo: '',
         packageInfo: '',
@@ -35,13 +36,14 @@ const editStock = () => {
                 method: "PATCH",
                 body: JSON.stringify({
                     username: packageInfo.username,
+                    title: packageInfo.title,
                     receiveFrom: packageInfo.receiveFrom,
                     sendTo: packageInfo.sendTo,
                     packageInfo: packageInfo.packageInfo,
                 })
             })
             if(res.ok){
-                router.push('/')
+                router.push('/stocklist')
             }
         } catch (error) {
             console.log('Add Order Fail')
