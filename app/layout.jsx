@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className='h-screen'>
         <Provider>
           <Nav />
-          <main className='p-4 flex'>
+          <main className='p-4 flex justify-center pt-16'>
             {children}
           </main>
         </Provider>

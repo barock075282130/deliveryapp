@@ -11,6 +11,10 @@ const userSchema = new Schema({
     role: {
         type: String,
         default: 'customer',
+    },
+    permission: {
+        type: String,
+        default: 'user'
     }
 })
 

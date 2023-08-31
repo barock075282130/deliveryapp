@@ -18,6 +18,9 @@ const editStock = () => {
         receiveFrom:'',
         sendTo: '',
         packageInfo: '',
+        userPhone: '',
+        receiverName: '',
+        receiverPhone: '',
     });
     const getPackage = async() => {
         try {
@@ -40,6 +43,9 @@ const editStock = () => {
                     receiveFrom: packageInfo.receiveFrom,
                     sendTo: packageInfo.sendTo,
                     packageInfo: packageInfo.packageInfo,
+                    userPhone: packageInfo.userPhone,
+                    receiverName: packageInfo.receiverName,
+                    receiverPhone: packageInfo.receiverPhone,
                 })
             })
             if(res.ok){

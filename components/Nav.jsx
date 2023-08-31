@@ -10,7 +10,7 @@ const Nav = () => {
   const pathName = usePathname()
     return (
     <>
-      <nav className="bg-gray-400 p-4">
+      <nav className="bg-gray-400 p-4 fixed w-full">
           {session?.user ? (
             <div className="flex justify-between">
               <Link href='/'>หน้าหลัก</Link>
@@ -29,7 +29,7 @@ const Nav = () => {
       </nav>
       {session?.user ? (
           <Sidebar 
-            wide="fixed w-16 md:w-40 h-screen bg-gray-400 select-none"
+            wide="fixed top-14 w-16 md:w-40 h-screen bg-gray-400 select-none"
             userData={session?.user?.id}
           />
       ): null}

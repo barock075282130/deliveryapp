@@ -7,12 +7,15 @@ import StockForm from "./StockForm";
 
 const AddStock = () => {
     const { data:session } = useSession();
-    const userData = session?.user?.id?.username
+    const userData = session?.user?.id
     const router = useRouter();
     const [ info, setInfo ] = useState({
-        username: userData,
+        username: userData?.username,
+        userPhone: '',
         title:'',
         receiveFrom: '',
+        receiverName: '',
+        receiverPhone: '',
         sendTo:'',
         packageInfo:'',
     })
@@ -25,10 +28,14 @@ const AddStock = () => {
                 method: "POST",
                 body: JSON.stringify({
                     username: info.username,
+                    userPhone: info.userPhone,
+                    receiverName: info.receiverName,
+                    receiverPhone: info.receiverPhone,
                     title: info.title,
                     receiveFrom: info.receiveFrom,
                     sendTo: info.sendTo,
                     packageInfo: info.packageInfo,
+                    packageUser: userData?._id
                 })
             })
             if(res.ok){

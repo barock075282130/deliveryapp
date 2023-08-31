@@ -3,15 +3,29 @@ import connectDB from "@utils/database";
 import { NextResponse } from "next/server";
 
 export const POST = async(req) => {
-    const { username, title, receiveFrom, sendTo, packageInfo } = await req.json();
+    const { 
+        username,
+        userPhone,
+        receiverName,
+        receiverPhone,
+        title,
+        receiveFrom,
+        sendTo,
+        packageInfo,
+        packageUser,
+    } = await req.json();
     try {
         await connectDB();
-        const data = await new Package({
+        const data = new Package({
             username,
+            userPhone,
+            receiverName,
+            receiverPhone,
             title,
             receiveFrom,
             sendTo,
             packageInfo,
+            packageUser: packageUser,
         });
         await data.save();
         return new Response("Update Success", { status: 200 });

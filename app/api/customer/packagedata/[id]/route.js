@@ -15,7 +15,16 @@ export const GET = async(req, { params }) => {
 }
 
 export const PATCH = async(req,{ params }) => {
-    const { username, title, receiveFrom, sendTo, packageInfo } = await req.json();
+    const {
+      username,
+      userPhone,
+      receiverName,
+      receiverPhone,
+      title,
+      receiveFrom,
+      sendTo,
+      packageInfo,
+    } = await req.json();
     try {
         await connectDB();
 
@@ -26,6 +35,9 @@ export const PATCH = async(req,{ params }) => {
         existPackage.receiveFrom = receiveFrom;
         existPackage.sendTo = sendTo;
         existPackage.packageInfo = packageInfo;
+        existPackage.userPhone = userPhone;
+        existPackage.receiverName = receiverName;
+        existPackage.receiverPhone = receiverPhone;
         await existPackage.save();
         return new Response('update data success',{ status: 200 })
     } catch (error) {

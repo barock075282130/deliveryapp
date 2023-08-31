@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const SignIn = () => {
     const [ providers, setProviders ] = useState(null);
     const { data:session } = useSession();
-    const userSignInCheck = session?.user
+    const userSignInCheck = session?.user?.id
     const router = useRouter();
     useEffect(() => {
         const setUpProviders = async() =>{
@@ -15,13 +15,11 @@ const SignIn = () => {
         }
     
         setUpProviders();
-    }, []);
+        if(userSignInCheck) router.push('/')
+    }, [userSignInCheck]);
     return (
         <div className="flex justify-center items-center min-h-full">
-            {userSignInCheck ? (
-                router.push('/')
-            ):(
-                providers &&
+                {providers &&
                     Object.values(providers).map((provider) => (
                     <span
                         key={provider.name}
@@ -32,8 +30,7 @@ const SignIn = () => {
                         >
                         เข้าสู่ระบบ {provider.name}
                     </span>
-                ))
-            )}
+                ))}
         </div>
     )
 }
