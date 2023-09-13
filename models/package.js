@@ -35,7 +35,15 @@ const packageSchema = new Schema({
   },
   packageUser: {
     type: Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+  },
+  hidePackage: {
+    type: String,
+    default: 'รอ',
+  },
+  rider:{
+    type: String,
+    default: '',
   }
 });
 

@@ -20,6 +20,7 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, username: e.target.value })}
                             value={info.username}
                             placeholder="ชื่อ-นามสกุล"
+                            required
                         />
                     </div>
                     <div className="mb-2">
@@ -30,6 +31,7 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, userPhone: e.target.value })}
                             value={info.userPhone}
                             placeholder="เบอร์โทรศัพท์"
+                            required
                         />
                     </div>
                     <div className="mb-2">
@@ -40,6 +42,7 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, receiverName: e.target.value })}
                             value={info.receiverName}
                             placeholder="ชื่อผู้รับ"
+                            required
                         />
                     </div>
                     <div className="mb-2">
@@ -50,6 +53,7 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, receiverPhone: e.target.value })}
                             value={info.receiverPhone}
                             placeholder="เบอร์โทรศัพท์ผู้รับ"
+                            required
                         />
                     </div>
                     <div className="mb-2">
@@ -60,6 +64,7 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, title: e.target.value })}
                             value={info.title}
                             placeholder="ประเภทของ"
+                            required
                         />
                     </div>
                     <div className="mb-2">
@@ -70,6 +75,7 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, receiveFrom: e.target.value })}
                             value={info.receiveFrom}
                             placeholder="ที่อยู่ผู้ส่งพัสดุ"
+                            required
                         />
                     </div>
                     <div className="mb-2">
@@ -80,6 +86,7 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, sendTo: e.target.value })}
                             value={info.sendTo}
                             placeholder="ที่อยู่ผู้รับพัสดุ"
+                            required
                         />
                     </div>
                     <div className="mb-2">
@@ -91,14 +98,15 @@ const StockForm = ({
                             onChange={(e)=>setInfo({ ...info, packageInfo: e.target.value })}
                             value={info.packageInfo}
                             placeholder="ข้อมูลพัสดุ"
+                            required
                         ></textarea>
                     </div>
                 </div>
                 <div className="flex justify-between">
-                    <button className="green_button">{confirm ? `กำลัง${type}พัสดุ...` : `${type}พัสดุ`}</button>
                     <Link href='/'>
                         <button className="gray_button">ยกเลิก</button>
                     </Link>
+                    <button className="green_button">{confirm ? `กำลัง${type}พัสดุ...` : `${type}พัสดุ`}</button>
                 </div>
             </form>
         </div>

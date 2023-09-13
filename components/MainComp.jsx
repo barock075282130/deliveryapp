@@ -27,7 +27,9 @@ const MainComp = () => {
                 ):(
                     userDataRole&&userDataRole?.role === 'rider'?(
                         <div className="ml-16 duration-300 md:ml-40">
-                            <Rider />
+                            <Rider 
+                                userDataRole={userDataRole}
+                            />
                         </div>
                     ):(
                         <div className="ml-16 duration-300 md:ml-40">

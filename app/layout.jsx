@@ -16,10 +16,10 @@ const notoSansThai = Noto_Sans_Thai({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={notoSansThai.className}>
-      <body className='h-screen'>
+      <body>
         <Provider>
           <Nav />
-          <main className='p-4 flex justify-center pt-16'>
+          <main className='p-4 flex justify-center h-screen pt-16'>
             {children}
           </main>
         </Provider>

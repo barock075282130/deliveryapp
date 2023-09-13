@@ -2,7 +2,7 @@ import SignIn from "@components/SignIn"
 
 const Login = () => {
     return (
-        <div>
+        <div className="flex justify-center h-full items-center">
           <SignIn />
         </div>
     )

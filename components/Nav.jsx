@@ -7,10 +7,12 @@ import Sidebar from "./Sidebar";
 
 const Nav = () => {
   const { data: session } = useSession();
+  const transNav = 'p-4 bg-white drop-shadow-lg fixed w-full z-10'
+  const NotNav = 'bg-gray-400 p-4 fixed w-full z-10'
   const pathName = usePathname()
     return (
     <>
-      <nav className="bg-gray-400 p-4 fixed w-full">
+      <nav className={session?.user ? NotNav : transNav}>
           {session?.user ? (
             <div className="flex justify-between">
               <Link href='/'>หน้าหลัก</Link>

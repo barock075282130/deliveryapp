@@ -8,17 +8,19 @@ import StockForm from "./StockForm";
 const AddStock = () => {
     const { data:session } = useSession();
     const userData = session?.user?.id
+    const address = userData?.address + ' ' + userData?.province + ' ' + userData?.postcode
     const router = useRouter();
     const [ info, setInfo ] = useState({
         username: userData?.username,
-        userPhone: '',
+        userPhone: userData?.phone || '',
         title:'',
-        receiveFrom: '',
+        receiveFrom: address || '',
         receiverName: '',
         receiverPhone: '',
         sendTo:'',
         packageInfo:'',
     })
+    console.log(userData)
     const [ confirm, setConfirm ] = useState(false)
     const addStockButton = async(e) => {
         setConfirm(true)
@@ -35,7 +37,9 @@ const AddStock = () => {
                     receiveFrom: info.receiveFrom,
                     sendTo: info.sendTo,
                     packageInfo: info.packageInfo,
-                    packageUser: userData?._id
+                    packageUser: userData?._id,
+                    hidePackage: 'รอ',
+                    rider: '',
                 })
             })
             if(res.ok){

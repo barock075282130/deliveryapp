@@ -1,16 +1,16 @@
+import PackageStatus from "./PackageStatus";
 import UsernameForm from "./UsernameForm";
 
 const Customer = ({ userDataRole }) => {
     return (
         <div>
-            {userDataRole&&userDataRole?.username === '' ? (
+            {userDataRole&&userDataRole?.username === ''&&(
                 <UsernameForm 
-                    data={userDataRole}
+                    userId={userDataRole?._id}
                 />
-            ): (
-                <p>
-                    Customer
-                </p>
+            )}
+            {userDataRole&&userDataRole?.username !== ''&&(
+                <PackageStatus />
             )}
         </div>
     )
