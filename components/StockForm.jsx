@@ -103,7 +103,7 @@ const StockForm = ({
                     </div>
                 </div>
                 <div className="flex justify-between">
-                    <Link href='/'>
+                    <Link href='/stocklist'>
                         <button className="gray_button">ยกเลิก</button>
                     </Link>
                     <button className="green_button">{confirm ? `กำลัง${type}พัสดุ...` : `${type}พัสดุ`}</button>

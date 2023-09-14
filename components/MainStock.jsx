@@ -10,6 +10,7 @@ const MainStock = () => {
     const permission = session?.user?.id
     const [ packageInfo, setPackageInfo ] = useState([]);
     const [ submit, setSubmit ] = useState(false);
+    const [ done, setDone ] = useState(false);
     const router = useRouter();
     const getPackage = async() => {
         try {
@@ -39,6 +40,24 @@ const MainStock = () => {
     const editPackage = (id) => {
         router.push(`/stocklist/editstock?id=${id}`)
     }
+    const updatePackage = async(id) => {
+        setDone(true)
+        try {
+            const update = await fetch(`/api/customer/customerpackage/${id}`,{
+                method: "PATCH",
+                body: JSON.stringify({
+                    hidePackage: 'เสร็จ'
+                })
+            })
+            if(update.ok){
+                router.push('/');
+            }
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setDone(false)
+        }
+    }
     const deletePackage = async(id) => {
         setSubmit(true)
         try {
@@ -58,22 +77,27 @@ const MainStock = () => {
         if(!permission){
             router.push('/')
         }
-        if(permission?.role === 'rider'){
-            getRiderPackage();
+        if(permission){
+            if(permission?.role === 'rider'){
+                getRiderPackage();
+            }else{
+                getPackage();
+            }
         }else{
-            getPackage();
+            return;
         }
     },[permission])
     return (
         <div className="ml-16 duration-300 md:ml-40 w-full">
             {permission ? (
                 <StockTable 
-                    type={permission?.role !== 'rider'? 'customer' : 'rider'}
                     packageInfo={packageInfo}
                     editPackage={editPackage}
                     deletePackage={deletePackage}
                     handleViewPackage={handleViewPackage}
+                    updatePackage={updatePackage}
                     status={submit}
+                    done={done}
                     role={permission?.role}
                 />
             ):(

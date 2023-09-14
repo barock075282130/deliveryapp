@@ -1,8 +1,11 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const UsernameForm = ({ userId }) => {
+
+    const router = useRouter();
     const [ name, setName ] = useState({
         username: '',
         address: '',
@@ -34,7 +37,6 @@ const UsernameForm = ({ userId }) => {
                     province: name.province,
                     postcode: name.postcode,
                     phone: name.phone,
-                    register: true
                 })
             }) 
             if(res.ok){
@@ -49,31 +51,37 @@ const UsernameForm = ({ userId }) => {
     const userData = [{
         title: 'ชื่อ-นามสกุล',
         setFucn: (e)=>setName({ ...name, username: e.target.value }),
+        placeholder: 'ชื่อ-นามสกุลจริง...',
         value: name.username,
     },{
         title: 'ที่อยู่',
         setFucn: (e)=>setName({ ...name, address: e.target.value }),
+        placeholder: 'เลขที่ หมู่ที่ ถนน ตำบล อำเภอ...',
         value: name.address,
     },{
         title: 'จังหวัด',
         setFucn: (e)=>setName({ ...name, province: e.target.value }),
+        placeholder: 'จังหวัด...',
         value: name.province,
     },{
         title: 'รหัสไปรษณีย์',
         setFucn: (e)=>setName({ ...name, postcode: e.target.value }),
+        placeholder: 'รหัสไปรษณีย์...',
         value: name.postcode,
     },{
         title: 'เบอร์โทรศัพท์',
         setFucn: (e)=>setName({ ...name, phone: e.target.value }),
+        placeholder: 'เบอร์โทรศัพท์...',
         value: name.phone,
     }]
     useEffect(()=>{
+        if(!userId) router.push('/')
         getUser();
-    },[])
+    },[userId])
     return (
         <div>
             <form onSubmit={submitName} className="grid w-96 gap-3">
-                {userData&&userData.map((data)=>(
+                {userData.map((data)=>(
                         <div className="grid place-items-start gap-3" key={data.title}>
                             <p className="text-center">{data.title}</p>
                             <input 
@@ -81,11 +89,11 @@ const UsernameForm = ({ userId }) => {
                                 onChange={data.setFucn} 
                                 value={data.value} 
                                 className="border border-gray-300 rounded-lg px-3 py-2"
-                                placeholder={`${data.title}...`}
+                                placeholder={`${data.placeholder}`}
                             />
                         </div>
                 ))}
-                <button className="blue_button">
+                <button className="blue_button" disabled={submit}>
                     {submit ? 'กำลังอัพเดท...' : 'ยืนยัน'}
                 </button>
             </form>

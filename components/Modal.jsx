@@ -42,6 +42,7 @@ const Modal = ({
                                 type="button"
                                 className="text-blue-500 background-transparent hover:bg-blue-600 hover:text-blue-100 duration-200 rounded-lg font-bold px-6 py-2 text-sm mr-1"
                                 onClick={handleFunction}
+                                disabled={status}
                             >
                                 { status ? `กำลัง${title}ข้อมูล...` : `ยืนยัน` }
                             </button>

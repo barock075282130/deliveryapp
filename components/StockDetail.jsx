@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const StockDetail = () => {
     const searchParams = useSearchParams();
@@ -64,28 +65,35 @@ const StockDetail = () => {
             <p className="text-2xl text-center font-semibold mt-6 mb-2">รายละเอียดพัสดุ</p>
             {packageDetail ? (
                 permission?.role === 'rider' ? (
-                    <div className="flex justify-normal gap-x-6">
-                        <div className="grid grid-cols-2 gap-x-3">
-                            <label className="ml-2 block mb-1">ชื่อ-นามสกุลผู้ส่ง</label>
-                            <p>{packageDetail.username}</p>
-                            <label className="ml-2 block mb-1">เบอร์โทรศัพท์ผู้ส่ง</label>
-                            <p>{packageDetail.userPhone}</p>
-                            <label className="ml-2 block mb-1">ที่อยู่ผู้ส่งพัสดุ</label>
-                            <p>{packageDetail.receiveFrom}</p>
+                    <>
+                        <div className="flex justify-normal gap-x-6">
+                            <div className="grid grid-cols-2 gap-x-3">
+                                <label className="ml-2 block mb-1">ชื่อ-นามสกุลผู้ส่ง</label>
+                                <p>{packageDetail.username}</p>
+                                <label className="ml-2 block mb-1">เบอร์โทรศัพท์ผู้ส่ง</label>
+                                <p>{packageDetail.userPhone}</p>
+                                <label className="ml-2 block mb-1">ที่อยู่ผู้ส่งพัสดุ</label>
+                                <p>{packageDetail.receiveFrom}</p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-x-3">
+                                <label className="ml-2 block mb-1">ชื่อผู้รับ</label>
+                                <p>{packageDetail.receiverName}</p>
+                                <label className="ml-2 block mb-1">เบอร์โทรศัพท์ผู้รับ</label>
+                                <p>{packageDetail.receiverPhone}</p>
+                                <label className="ml-2 block mb-1">ที่อยู่ผู้รับพัสดุ</label>
+                                <p>{packageDetail.sendTo}</p>
+                            </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-x-3">
-                            <label className="ml-2 block mb-1">ชื่อผู้รับ</label>
-                            <p>{packageDetail.receiverName}</p>
-                            <label className="ml-2 block mb-1">เบอร์โทรศัพท์ผู้รับ</label>
-                            <p>{packageDetail.receiverPhone}</p>
-                            <label className="ml-2 block mb-1">ที่อยู่ผู้รับพัสดุ</label>
-                            <p>{packageDetail.sendTo}</p>
-                        </div>
-                    </div>
+                        <button className="gray_button">
+                            <Link href='/stocklist'>
+                                ย้อนกลับ
+                            </Link>
+                        </button>
+                    </>
                 ):(
                     <>
-                    <div className="flex justify-center gap-x-6">
-                        <div className="grid grid-cols-2 gap-x-3">
+                    <div className="grid gap-x-6">
+                        <div className="grid grid-cols-2 gap-x-3 mt-5">
                             <label className="ml-2 block mb-1">ชื่อ-นามสกุล</label>
                             <p>{packageDetail.username}</p>
                             <label className="ml-2 block mb-1">เบอร์โทรศัพท์</label>
@@ -102,9 +110,14 @@ const StockDetail = () => {
                             <p>{packageDetail.sendTo}</p>
                         </div>
                         <label className="ml-2 block mb-1">ประเภทของพัสดุ</label>
-                        <p>{packageDetail.title}</p>
+                        <p className="text-center">{packageDetail.title}</p>
                         <label className="ml-2 block mb-1">ข้อมูลพัสดุ</label>
-                        <p>{packageDetail.packageInfo}</p>
+                        <p className="text-center mb-5">{packageDetail.packageInfo}</p>
+                        <button className="gray_button">
+                            <Link href='/stocklist'>
+                                ย้อนกลับ
+                            </Link>
+                        </button>
                     </div>
                     </>
                 )

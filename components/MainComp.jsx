@@ -12,17 +12,20 @@ const MainComp = () => {
             <div>
                 {!session?.user ? (
                     <>
-                        <div className="font-semibold text-6xl absolute top-56 left-20">
-                            <p>Delivery App</p>
-                            <p className="text-xl mt-2 text-end">easy app for delivery in province</p>
-                        </div>
-                        <Image 
-                            src='/deliverybike1.jpg'
-                            alt="dklnmfvoaf"
-                            width={600}
-                            height={600}
-                            className="absolute bottom-2 right-5"
-                        />
+                        <section className="w-screen flex justify-between">
+                            <div className="font-semibold text-6xl grid place-items-center w-full">
+                                <span className="text-center">
+                                    <p>Delivery App</p>
+                                    <p className="text-xl mt-2 text-end">easy app for delivery in province</p>
+                                </span>
+                            </div>
+                            <Image 
+                                src='/deliverybike1.jpg'
+                                alt="dklnmfvoaf"
+                                width={600}
+                                height={600}
+                            />
+                        </section>
                     </>
                 ):(
                     userDataRole&&userDataRole?.role === 'rider'?(

@@ -10,7 +10,9 @@ const Customer = ({ userDataRole }) => {
                 />
             )}
             {userDataRole&&userDataRole?.username !== ''&&(
-                <PackageStatus />
+                <PackageStatus 
+                    userId={userDataRole?._id}
+                />
             )}
         </div>
     )

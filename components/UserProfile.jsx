@@ -7,7 +7,7 @@ const UserProfile = () => {
     const { data:session } = useSession();
     const userId = session?.user?.id
     const router = useRouter();
-    const [ profile, setProfile ] = useState(null);
+    const [ profile, setProfile ] = useState([]);
     const editProfile = (id) => router.push(`/profile/edit?id=${id}`)
     const getProfileId = async() => {
         try {
@@ -21,24 +21,38 @@ const UserProfile = () => {
         }
     }
     useEffect(()=>{
+        if(!userId) router.push('/')
         if(userId) getProfileId();
     },[userId])
+    const profileData = [{
+        title: 'ชื่อ-นามสกุล',
+        info: profile.name,
+    },{
+        title: 'อีเมล์',
+        info: profile.email,
+    },{
+        title: 'เบอร์โทรศัพท์',
+        info: profile.phone,
+    },{
+        title: 'ที่อยู่',
+        info: profile.address,
+    },{
+        title: 'จังหวัด',
+        info: profile.province,
+    },{
+        title: 'รหัสไปรษณีย์',
+        info: profile.postcode,
+    }]        
     return (
         <div className="text-center">
             <header>ข้อมูลส่วนตัว</header>
             <div className="text-start my-5">
-                {profile&&
-                    <> 
-                        <div className="grid grid-cols-2 gap-5">
-                            <span>ชื่อ-นามสกุล</span>
-                            <p>{profile.name}</p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-5">
-                            <span>อีเมล์</span>
-                            <p>{profile.email}</p>
-                        </div>
-                    </>
-                }
+                {profileData.map((profileinfo)=>(
+                    <div className="grid grid-cols-2 gap-5" key={profileinfo.title}>
+                        <span>{profileinfo.title}</span>
+                        <p>{profileinfo.info}</p>
+                    </div>
+                ))}
             </div>
             <div className="flex justify-start">
                 <button onClick={()=>editProfile(profile.id)}>แก้ไขข้อมูลส่วนตัว</button>

@@ -61,7 +61,7 @@ const editStock = () => {
         if(!permission){
             router.push('/')
         }
-        getPackage();
+        if(permission) getPackage();
     },[permission])
     return (
         <div className="ml-16 duration-300 md:ml-40">

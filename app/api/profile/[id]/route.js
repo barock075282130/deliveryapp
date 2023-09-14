@@ -10,7 +10,11 @@ export const GET = async(req, { params }) => {
         const data = {
             id: getUserInfo._id,
             name: getUserInfo.username,
-            email: getUserInfo.email
+            email: getUserInfo.email,
+            address: getUserInfo.address,
+            province: getUserInfo.province,
+            postcode: getUserInfo.postcode,
+            phone: getUserInfo.phone,
         }
         if(!getUserInfo) return new Response('Not found!!',{ status: 404 })
         return NextResponse.json(data, { status: 200 })
