@@ -44,18 +44,20 @@ const UserProfile = () => {
         info: profile.postcode,
     }]        
     return (
-        <div className="text-center">
-            <header>ข้อมูลส่วนตัว</header>
-            <div className="text-start my-5">
-                {profileData.map((profileinfo)=>(
-                    <div className="grid grid-cols-2 gap-5" key={profileinfo.title}>
-                        <span>{profileinfo.title}</span>
-                        <p>{profileinfo.info}</p>
-                    </div>
-                ))}
-            </div>
-            <div className="flex justify-start">
-                <button onClick={()=>editProfile(profile.id)}>แก้ไขข้อมูลส่วนตัว</button>
+        <div className="border-2 flex h-fit p-6 rounded-lg shadow-xl my-5">
+            <div className="text-center">
+                <header>ข้อมูลส่วนตัว</header>
+                <div className="text-start my-5">
+                    {profileData.map((profileinfo)=>(
+                        <div className="grid grid-cols-2 gap-5" key={profileinfo.title}>
+                            <span>{profileinfo.title}</span>
+                            <p>{profileinfo.info}</p>
+                        </div>
+                    ))}
+                </div>
+                <div className="flex justify-start">
+                    <button onClick={()=>editProfile(profile.id)} className="blue_button">แก้ไขข้อมูลส่วนตัว</button>
+                </div>
             </div>
         </div>
     )

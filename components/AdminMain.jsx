@@ -2,7 +2,7 @@ import AdminTable from './AdminTable'
 
 const AdminMain = () => {
   return (
-    <div>
+    <div className='w-screen'>
         <AdminTable />
     </div>
   )

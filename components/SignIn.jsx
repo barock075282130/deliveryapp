@@ -20,8 +20,7 @@ const SignIn = () => {
     }, [userSignInCheck]);
     return (
         <div className="grid">
-            <p className="text-center text-2xl font-semibold">เข้าสู่ระบบ</p>
-            <div className="flex p-3 rounded-lg">
+            <div className="grid p-5 rounded-lg gap-2 shadow-xl">
                     {providers &&
                         Object.values(providers).map((provider) => (
                         <span
@@ -29,22 +28,28 @@ const SignIn = () => {
                                 onClick={() => {
                                     signIn(provider.id);
                                 }}
-                            className="flex gap-1 hover:bg-green-100 hover:text-green-600 duration-300 rounded-lg py-2 px-5 cursor-pointer"
+                            className="flex items-center font-semibold text-lg gap-4 hover:bg-green-100 hover:text-green-600 duration-300 rounded-lg py-2 px-5 cursor-pointer"
                             >
                                 {provider.name === 'Facebook' ? (
-                                    <Image 
-                                        src='/icons8-facebook-480.svg'
-                                        alt="facebook"
-                                        width={50}
-                                        height={50}
-                                    />
+                                    <>
+                                        <Image 
+                                            src='/icons8-facebook-480.svg'
+                                            alt="facebook"
+                                            width={40}
+                                            height={40}
+                                        />
+                                        <p>เข้าสู่ระบบด้วย {provider.name}</p>
+                                    </>
                                 ):(
-                                    <Image 
-                                        src='/icons8-google-480.svg'
-                                        alt="google"
-                                        width={50}
-                                        height={50}
-                                    />
+                                    <>
+                                        <Image 
+                                            src='/icons8-google-480.svg'
+                                            alt="google"
+                                            width={40}
+                                            height={40}
+                                        />
+                                        <p>เข้าสู่ระบบด้วย {provider.name}</p>
+                                    </>
                                 )}
                         </span>
                     ))}

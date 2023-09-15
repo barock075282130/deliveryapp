@@ -2,7 +2,9 @@ import StockDetail from "@components/StockDetail"
 
 const stockDetail = () => {
     return (
-        <StockDetail />
+        <div className="w-screen">
+            <StockDetail />
+        </div>
     )
 }
 

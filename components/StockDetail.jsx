@@ -61,7 +61,7 @@ const StockDetail = () => {
         }
     },[permission])
     return (
-        <div>
+        <div className="ml-16 md:ml-40 px-5">
             <p className="text-2xl text-center font-semibold mt-6 mb-2">รายละเอียดพัสดุ</p>
             {packageDetail ? (
                 permission?.role === 'rider' ? (
