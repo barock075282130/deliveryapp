@@ -79,11 +79,11 @@ const UsernameForm = ({ userId }) => {
         getUser();
     },[userId])
     return (
-        <div>
+        <div className="my-5">
             <form onSubmit={submitName} className="grid w-96 gap-3">
                 {userData.map((data)=>(
                         <div className="grid place-items-start gap-3" key={data.title}>
-                            <p className="text-center">{data.title}</p>
+                            <p className="text-center font-semibold">{data.title}</p>
                             <input 
                                 type="text" 
                                 onChange={data.setFucn} 

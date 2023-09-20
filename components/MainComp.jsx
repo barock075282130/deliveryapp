@@ -11,12 +11,12 @@ const MainComp = () => {
         <>
             <div>
                 {!session?.user ? (
-                    <>
-                        <section className="w-screen flex justify-between">
-                            <div className="font-semibold text-6xl grid place-items-center w-full">
+                    <div>
+                        <section className="p-6 grid grid-cols-2">
+                            <div className="font-semibold text-6xl grid place-items-center">
                                 <span className="text-center">
                                     <p>Delivery App</p>
-                                    <p className="text-xl mt-2 text-end">easy app for delivery in province</p>
+                                    <p className="text-xl mt-2 text-end">easy app for delivery in your province</p>
                                 </span>
                             </div>
                             <Image 
@@ -26,7 +26,7 @@ const MainComp = () => {
                                 height={600}
                             />
                         </section>
-                    </>
+                    </div>
                 ):(
                     userDataRole&&userDataRole?.role === 'rider'?(
                         <div className="ml-16 duration-300 md:ml-40">
@@ -35,7 +35,7 @@ const MainComp = () => {
                             />
                         </div>
                     ):(
-                        <div className="ml-16 duration-300 md:ml-40">
+                        <div>
                             <Customer 
                                 userDataRole={userDataRole}
                             />

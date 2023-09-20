@@ -47,7 +47,7 @@ const EditUser = () => {
     },[])
     return (
         <div className="h-full flex items-center">
-            <form onSubmit={handleUserRole} className="flex flex-col gap-4 shadow-xl shadow-green-200 border-2 border-green-400 rounded-lg p-5">
+            <form onSubmit={handleUserRole} className="flex flex-col gap-4 shadow-xl shadow-orange-200 border-2 border-orange-400 rounded-lg p-5">
                 {userData&& (
                     <div className="grid gap-2 text-lg">
                         <span>
@@ -69,11 +69,9 @@ const EditUser = () => {
                     <button className="green_button" disabled={status}>
                         {status ? 'กำลังอัพเดทข้อมูล...':'ยืนยัน'}
                     </button>
-                    <button className="gray_button">
-                        <Link href='/admin'>
+                        <Link href='/admin' className="gray_button text-center">
                             ย้อนกลับ
                         </Link>
-                    </button>
                 </div>
             </form>
         </div>

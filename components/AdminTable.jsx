@@ -3,10 +3,13 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 const UserInfo = ({ 
     user,
     editUser,
+    deleteUser,
+    status,
 }) => {
     return (
         <>
@@ -16,9 +19,19 @@ const UserInfo = ({
                     <td>{u.username}</td>
                     <td>{u.role === 'customer' ? 'ผู้ใช้งานทั่วไป':'คนส่งพัสดุ'}</td>
                     <td>
-                        <button onClick={()=>editUser(u._id)}>แก้ไข</button>
+                        <button onClick={()=>editUser(u._id)} 
+                            className="font-semibold w-full h-full py-2 bg-gray-600 text-white hover:bg-gray-100 hover:text-gray-600 duration-300"
+                        >
+                            แก้ไข
+                        </button>
                     </td>
-                    <td>ลบข้อมูล</td>
+                    <td>
+                        <Modal 
+                            title='ลบ'
+                            handleFunction={()=>deleteUser(u._id)}
+                            status={status}
+                        />
+                    </td>
                 </tr>
             ))}
         </>
@@ -29,8 +42,24 @@ const AdminTable = () => {
     const { data:session } = useSession();
     const permission = session?.user?.id?.permission
     const router = useRouter();
+    const [ status, setStatus ] = useState(false)
     const [ user, setUser ] = useState([]);
     const editUser = (id) => router.push(`/admin/edituser?id=${id}`)
+    const deleteUser = async(id) => {
+        setStatus(true)
+        try {
+            const confirmDelete = await fetch(`/api/admin/user/${id.toString()}`,{
+                method: "DELETE"
+            })
+            if(confirmDelete.ok){
+                window.location.reload();
+            }
+        } catch (error) {
+            console.log('Delete failed')
+        } finally {
+            setStatus(false)
+        }
+    }
     const userData = async() => {
         try {
             const res = await fetch('/api/admin/user',{
@@ -62,6 +91,8 @@ const AdminTable = () => {
                 <UserInfo
                     user={user}
                     editUser={editUser}
+                    deleteUser={deleteUser}
+                    status={status}
                 />
             </tbody>
         </table>

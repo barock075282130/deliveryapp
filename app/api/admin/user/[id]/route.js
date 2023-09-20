@@ -32,3 +32,15 @@ export const PATCH = async (req,{ params }) => {
       return new Response('update error',{ status: 500 })
   }
 };
+
+export const DELETE = async(req,{ params }) => {
+    try {
+        await connectDB();
+        
+        const user = await User.findByIdAndRemove(params.id);
+        if(!user) return new Response('user not found!',{ status: 404 })
+      return new Response('delete success',{ status: 200 })
+    } catch (error) {
+      return new Response("delete error", { status: 500 });
+    }
+}

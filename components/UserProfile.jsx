@@ -46,7 +46,7 @@ const UserProfile = () => {
     return (
         <div className="border-2 flex h-fit p-6 rounded-lg shadow-xl my-5">
             <div className="text-center">
-                <header>ข้อมูลส่วนตัว</header>
+                <header className="font-semibold text-2xl">ข้อมูลส่วนตัว</header>
                 <div className="text-start my-5">
                     {profileData.map((profileinfo)=>(
                         <div className="grid grid-cols-2 gap-5" key={profileinfo.title}>

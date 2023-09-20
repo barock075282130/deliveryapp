@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 const Modal = ({
-        type,
         title,
         handleFunction,
         status,
@@ -19,8 +18,9 @@ const Modal = ({
         <button
             type="button"
             onClick={showModal}
+            className="bg-red-600 w-full h-full py-2 font-semibold text-red-100 hover:text-red-600 hover:bg-red-100 duration-300"
         >
-            {type}
+            ลบข้อมูล
         </button>
         {openModal ? (
         <>
